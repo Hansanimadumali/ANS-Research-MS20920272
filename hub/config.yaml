@@ -1,0 +1,15 @@
+mqtt:
+  ip: localhost
+  port: 1883
+  topic:  test
+  username: sammy
+  password: password
+  client_name: hub0
+
+auth_server:
+  client_id: iot-hub-python
+  client_secret: 836be5ba-e8fc-4765-8df6-f1903c30a838
+  realm_name: demo-realm
+  server_url: localhost
+  server_port: 8080
+  

@@ -1,0 +1,154 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="display: flex; width:100%">
+
+    <div style="flex: 1;">
+        <a class="navbar-brand" href="#">Simple Temperature Edge Device Simulator - Settings</a>
+    </div>
+        <form class="form-inline my-2 my-lg-0" method="GET" action="/logout">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+
+</nav>
+ {{#if message}}
+            <div class="alert {{messageClass}}" role="alert">
+                {{message}}
+            </div>
+{{/if}}
+
+<div style="padding: 30px; display:flex">
+    
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">User Details</h5>
+
+            <form method="POST" action="/user/update">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="admin" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="New Password" name="password">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Hub Details</h5>
+
+            <form method="POST" action="/hub/update">
+                <div class="form-group">
+                    <label for="hub-ip-address">IP address</label>
+                    <input type="text" class="form-control" id="hub-ip-address" placeholder="Hub IP address" value="{{settings.hub.hub_ip}}" name="hub_ip">
+                </div>
+
+                <div class="form-group">
+                    <label for="hub-port">Mqtt Port</label>
+                    <input type="text" class="form-control" id="hub-port" placeholder="8000" name="hub_port"  value="{{settings.hub.hub_port}}">
+                </div>
+
+                {{!-- <div class="form-group">
+                    <label for="access_token">Access Token</label>
+                    <textarea type="text" class="form-control" id="access_token" placeholder="Access token taken by Authorization server" name="access_token" value="dfsfdfsd">{{settings.hub.access_token}}</textarea>
+                </div> --}}
+
+
+                <div class="form-group">
+                    <label for="access_token">ClientID</label>
+                    <input type="text" class="form-control" id="client_id" placeholder="ClientID Auth Server" name="client_id" value="{{settings.hub.client_id}}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="access_token">Client Secret</label>
+                    <input type="text" class="form-control" id="client_secret" placeholder="Client Secret Auth Server" name="client_secret" value="{{settings.hub.client_secret}}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="access_token">AuthServer Username</label>
+                    <input type="text" class="form-control" id="auth_user" placeholder="Client Secret Auth Server" name="auth_user" value="{{settings.hub.auth_user}}"/>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="access_token">AuthServer Password</label>
+                    <input type="text" class="form-control" id="auth_password" placeholder="Client Secret Auth Server" name="auth_password" value="{{settings.hub.auth_password}}"/>
+                </div> 
+
+
+                <button type="submit" class="btn btn-primary">Update Hub</button>
+            </form>
+
+            <form>
+                <div class="form-group">
+                    <label for="access_token">AuthServer Token</label>
+                    <input type="text" disabled class="form-control" placeholder="Auth Token"  value="{{settings.hub.access_token}}"/>
+                </div> 
+            </form>
+
+            <div class="row">
+                <div class="col-6">
+                    <form method="GET" action="/hub/update/token">
+                        <button type="submit" class="btn btn-primary">Update Token</button>
+                    </form>
+                </div>
+
+                <div class="col-6">
+                    <form method="GET" action="/hub/delete/token">
+                        <button type="submit" class="btn btn-danger">Delete Token</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Mqtt Details</h5>
+
+            <form method="POST" action="/mqtt/update">
+                <div class="form-group">
+                    <label for="mqtt-username">Cliend Id</label>
+                    <input type="text" class="form-control" id="mqtt-username" placeholder="Client Id" value="{{settings.mqtt.username}}" name="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="mqtt-password">Password</label>
+                    <input type="text" class="form-control" id="mqtt-password" placeholder="" name="password"  value="{{settings.mqtt.password}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="hub-topic">MQTT topic</label>
+                    <input type="text" class="form-control" id="hub-topic" placeholder="Mqtt topic" name="topic"  value="{{settings.mqtt.topic}}">
+                    <p>Current topic : {{settings.mqtt.topic}}/{{settings.device_id}}</p>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Mqtt</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Device Details</h5>
+
+            <form method="POST" action="/device/update">
+
+                <div class="form-group">
+                    <label for="device_id">Device Id</label>
+                    <input type="text" class="form-control" id="device_id" name="device_id" placeholder="Dev 0" value="{{settings.device_id}}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Device</button>
+            </form>
+        </div>
+    </div>
+
+</div>
